@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <header class="chat-header">
+        <h1>Chat Room</h1>
+    </header>
+    <div class="chat-container">
+        <div class="sidebar-container">
+            <div class="chat-sidebar" id="sidebar">
+                <h3>Room Name:</h3>
+                <p id="room-name">home</p>
+                <h3>Users</h3>
+                <ul id="users" class="user-list">
+                    <li>rahul</li>
+                    <li>atul</li>
+                </ul>
+            </div>
+        </div>
+        <div class="chat-main">
+            <div class="chat-window">
+                <div id="messages" class="messages"></div>
+            </div>
+            <div class="input-container">
+                <form id="chat-form">
+                    <input id="message" type="text" placeholder="Type a message..." required autocomplete="off">
+                    <button id="send-button">Send</button>
+                    <button id="send-location">Send Location</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script id="message-template" type="text/html">
+        <div class="message">
+            <span>{{username}}</span>
+            <p class="meta">{{createdAt}}: {{message}}</p>
+        </div>
+    </script>
+
+    <script id="location-message-template" type="text/html">
+        <div class="message">
+            <span>{{username}}</span>
+            <p class="meta">{{createdAt}}: <a href="{{url}}" target="_blank">My Current Location</a></p>
+        </div>
+    </script>
+
+    <script id="sidebar-template" type="text/html">
+        <div>
+            <h2>Room Name:</h2>
+            <h3>{{room}}</h3>
+            <h2>Users</h2>
+            <ul>
+                {{#users}}
+                <li>{{username}}</li>
+                {{/users}}
+            </ul>
+        </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data-10-year-range.min.js"></script>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+
+</html>
